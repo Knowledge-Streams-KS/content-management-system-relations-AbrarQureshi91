@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Article Creation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Article Creation Form</h1>
+        <form method="post" action="{% url 'create_article' %}">
+          {% csrf_token %}
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            {% comment %} <label for="categories">categories:</label>
+            <select id="Category" name="Category" required>
+                <option value="">Select a category</option>
+                <option value="technology">Technology</option>
+                <option value="business">Business</option>
+                <option value="lifestyle">Lifestyle</option>
+            </select> {% endcomment %}
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="8" required></textarea>
+
+            <button class="btn" type="submit">Create Article</button>
+        </form>
+    </div>
+    {% comment %} {% if msg %}
+    <h1> {{msg| upper}}</h1>
+    {% endif %}
+</body> {% endcomment %}
+</html>
