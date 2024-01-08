@@ -1,0 +1,5 @@
+<h2>Category: {{ category.name }}</h2>
+{% for article in articles %}
+    <h3><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h3>
+    <p>Publication Date: {{ article.publication_date }}</p>
+{% endfor %}
